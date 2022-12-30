@@ -3,16 +3,17 @@ package co.tiagoaguiar.netflixremake.UI
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.netflixremake.R
 import co.tiagoaguiar.netflixremake.model.Movie
 
-class MainAdapter (private val movies:List<Movie>): RecyclerView.Adapter<MainAdapter.MovieViewHolder>(){
+class MainAdapter(private val movies: List<Movie>) :
+    RecyclerView.Adapter<MainAdapter.MovieViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
         return MovieViewHolder(view)
     }
 
@@ -26,11 +27,11 @@ class MainAdapter (private val movies:List<Movie>): RecyclerView.Adapter<MainAda
         return movies.size
     }
 
-     inner class  MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-         fun bind(movie: Movie) {
-            val textFilm: TextView = itemView.findViewById(R.id.txt_id_text)
-             textFilm.text = movie.coverUrl
-         }
-     }
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(movie: Movie) {
+            val movieImage: ImageView = itemView.findViewById(R.id.movie_id)
+            movieImage.setImageResource(movie.coverUrl)
+        }
+    }
 
 }

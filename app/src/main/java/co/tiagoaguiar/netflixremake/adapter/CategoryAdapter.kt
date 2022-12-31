@@ -38,7 +38,7 @@ class CategoryAdapter(private val categories: List<Category>) :
             txtTitle.text = category.name
 
             rvCategory.layoutManager = LinearLayoutManager(itemView.context,RecyclerView.HORIZONTAL,false)
-            rvCategory.adapter = MovieAdapter(category.movies)
+            rvCategory.adapter = MovieAdapter(category.movies,R.layout.movie_item)
         }
     }
 

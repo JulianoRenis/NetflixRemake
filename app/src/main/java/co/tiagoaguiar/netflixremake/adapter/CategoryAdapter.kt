@@ -3,6 +3,7 @@ package co.tiagoaguiar.netflixremake.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import co.tiagoaguiar.netflixremake.model.Category
 import co.tiagoaguiar.netflixremake.model.Movie
 
 // Lista vertical
-class CategoryAdapter(private val categories: List<Category>) :
+class CategoryAdapter(private val categories: List<Category>,private val onItemClickListener: (Int)-> Unit) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
 
@@ -38,7 +39,7 @@ class CategoryAdapter(private val categories: List<Category>) :
             txtTitle.text = category.name
 
             rvCategory.layoutManager = LinearLayoutManager(itemView.context,RecyclerView.HORIZONTAL,false)
-            rvCategory.adapter = MovieAdapter(category.movies,R.layout.movie_item)
+            rvCategory.adapter = MovieAdapter(category.movies,R.layout.movie_item,onItemClickListener)
         }
     }
 
